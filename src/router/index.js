@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import { isUser, isAnon } from './role-guards';
+import { userGuard, anonGuard } from './role-guards';
 
 const routes = [
   /* {
@@ -17,7 +17,7 @@ const routes = [
   {
     path: "/signup",
     name: "signupView",
-    beforeEnter: [isAnon],
+    beforeEnter: [anonGuard],
     component: () =>
       import(/* webpackChunkName: "signupView" */ "../views/SignupView.vue"),
   },
@@ -25,7 +25,7 @@ const routes = [
   {
     path: "/login",
     name: "loginView",
-    beforeEnter: [isAnon],
+    beforeEnter: [anonGuard],
     component: () =>
       import(/* webpackChunkName: "loginView" */ "../views/LoginView.vue"),
   },
@@ -38,7 +38,7 @@ const routes = [
   {
     path: "/flit-details/:id",
     name: "flitDetailView",
-    beforeEnter: [isUser],
+    beforeEnter: [userGuard],
     component: () => import("../views/FlitDetailView.vue"),
     props: (route) => {
       const id = route.params.id;
@@ -48,7 +48,7 @@ const routes = [
   {
     path: "/user-profile/:id",
     name: "selectedUserView",
-    beforeEnter: [isUser],
+    beforeEnter: [userGuard],
     component: () => import("../views/SelectedUserView.vue"),
     props: (route) => {
       const id = route.params.id;
@@ -58,7 +58,7 @@ const routes = [
   {
     path: "/profile",
     name: "profileView",
-    beforeEnter: [isUser],
+    beforeEnter: [userGuard],
     component: () =>
       import(/* webpackChunkName: "profileView" */ "../views/ProfileView.vue"),
   },

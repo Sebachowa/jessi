@@ -1,6 +1,6 @@
 
 
-export const isUser = (to, from, next) => {
+export const userGuard = (to, from, next) => {
 
   const token = localStorage.getItem("token");
 
@@ -12,7 +12,7 @@ export const isUser = (to, from, next) => {
   }
 };
 
-export const isAnon = (to, from, next) => {
+export const anonGuard = (to, from, next) => {
 
   const token = localStorage.getItem("token");
 
