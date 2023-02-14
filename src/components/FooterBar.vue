@@ -91,8 +91,7 @@ export default {
     onMounted(async () => {
       const token = localStorage.getItem("token")
       const userId = localStorage.getItem("selfUserId")
-      console.log(token)
-      console.log(userId)
+
       if (token && userId) {
         await getSelf(userId)
       }
