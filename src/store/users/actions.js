@@ -29,9 +29,10 @@ const actions = {
     commit("setFollowedPeople", data.peopleYouFollow);
   },
   async login({ commit }, credentials) {
-    
     const { data } = await flitterApi.post("/users/login", credentials);
+
     commit("setSelfUser", data.user);
+
     localStorage.setItem("token", data.token);
     localStorage.setItem("selfUserId", data.user._id)
 
@@ -50,8 +51,18 @@ const actions = {
     router.push({ name: "flitsView" });
   },
 
+  logout({ commit }) {
+    localStorage.removeItem("token")
+    localStorage.removeItem("selfUserId")
+    commit("setSelfUser", null);
+    router.push({ name: "flitsView" });
+  },
 
-  
+  async getSelf({ commit }, id) {
+    const { data } = await flitterApi.get(`/users/${id}`)
+    commit("setSelfUser", data.user);
+    router.push({ name: "flitsView" });
+  }
 };
 
 

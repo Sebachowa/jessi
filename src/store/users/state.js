@@ -4,7 +4,7 @@ function state() {
       isLoading: false,
       selectedUser: {},
       isFollowed: false,
-      selfUser: {},
+      selfUser: null,
       token: null
     };
   }

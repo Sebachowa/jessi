@@ -21,8 +21,9 @@ const useUsers = () => {
         followAUser: (id, selfUserId) => store.dispatch("users/followAUser", id, selfUserId),
         unfollowAUser: (userId, selfUserId) => store.dispatch("users/unfollowAUser", userId, selfUserId),
         signUp: (userInfo) => store.dispatch("users/signUp", userInfo), 
-        login: (credentials) => store.dispatch("users/login", credentials)
-        
+        login: (credentials) => store.dispatch("users/login", credentials),
+        logout: () => store.dispatch("users/logout"),
+        getSelf: (id) => store.dispatch("users/getSelf", id)
     }
 }
 
