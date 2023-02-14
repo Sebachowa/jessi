@@ -1,7 +1,8 @@
 <template>
-  <div class="modal-background" @click.self="$emit('on:close')">
+  <div class="modal-background">
     <div class="modal-container">
       <h1>Lets flit arround </h1>
+      <button class="close-btn" @click="emit('onClose')">X</button>
       <form>
         <label for="">Type your flit ☺️</label>
         <textarea
@@ -9,17 +10,20 @@
         required>
         </textarea>
         <button type="submit">Flit it!</button>
-        </form>
+      </form>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  emits: ['on:close'],
-  setup( ) {
+<script setup>
+  import { defineEmits, defineExpose } from 'vue'
 
-}}
+  const emit = defineEmits(['onClose'])
+
+  defineExpose({
+  emit
+  })
+
 </script>
 
 <style scoped>
@@ -36,6 +40,7 @@ export default {
 }
 
 .modal-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,6 +86,17 @@ button {
     font-weight: bolder;
     color: #00172d;
     box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  width: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .center {

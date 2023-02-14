@@ -30,7 +30,6 @@
       const token = localStorage.getItem("token")
 
       if(token) {
-        console.log(token)
         fetchFollowedPeopleFlits(token)
       }
       else {
