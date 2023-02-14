@@ -4,6 +4,7 @@
     <FooterNav />
   </div>
 </template>
+
 <script>
     import { defineComponent } from 'vue';
     import FooterNav from './components/FooterBar.vue';
